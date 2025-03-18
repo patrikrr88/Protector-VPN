@@ -31,3 +31,4 @@ Protector VPN je webová aplikace poskytující jednoduché rozhraní pro správ
 
 ## Autor
 Tento projekt byl vytvořen Patrikem Rohlenou jako ukázka jednoduchého webového rozhraní pro VPN správu.
+Strávený čas : okolo 3 hodin.
