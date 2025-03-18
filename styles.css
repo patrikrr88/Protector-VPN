@@ -1,0 +1,222 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url("https://pngimg.com/d/world_map_PNG9.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+body {
+  margin: 0;
+  background-color: #0096FF;
+}
+
+:root {
+  --bar-width: 60px;
+  --bar-height: 8px;
+  --hamburger-gap: 6px;
+  --foreground: #000000;
+  --background: white;
+  --hamburger-margin: 8px;
+  --animation-timing: 300ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
+.hamburger-menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  width: max-content;
+  position: absolute;
+  top: var(--hamburger-margin);
+  left: var(--hamburger-margin);
+  z-index: 2;
+  cursor: pointer;
+  top: 45px;
+}
+
+.hamburger-menu:has(input:checked) {
+  --foreground: rgb(0, 0, 0);
+  --background: #000000;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  border-radius: 9999px;
+  transform-origin: left center;
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing),
+    background-color var(--animation-timing);
+}
+
+.hamburger-menu input {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+.hamburger-menu:has(input:checked) + .sidebar {
+  translate: 0 0vh;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 550px;
+  height: 400px;
+  background-color: var(--foreground);
+  color: var(--background);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  translate: 0 -100%;
+  transition: translate var(--animation-timing);
+}
+
+.sidebar div {
+  border-top: 3px solid #fff;
+  padding-top: 10px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.center-text {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+  -webkit-text-stroke: 1.33px black;
+}
+
+.hamburger-menu input:checked ~ .center-text {
+  opacity: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 80px; /* Posuneme switch níže */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+nav1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(0, 0, 0); /* Téměř neviditelná průhlednost */
+  padding: 1px 5px; /* Minimální výška proužku */
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Menší mezery mezi textem */
+  font-size: 12px; /* Velmi malé písmo */
+  color: rgb(255, 255, 255);
+  z-index: 3; /* Nad ostatními prvky */
+}
+
+.vpn-status {
+  transition: color 0.3s ease; /* Plynulý přechod mezi barvami */
+  color: red;
+}
+
+.price-text {margin-top: 165px;
+             position: absolute;
+            font-size: 20px;
+
+}
+
+.insode-txt{font-size: 70px;
+             margin-top: 0px;
+
+}
